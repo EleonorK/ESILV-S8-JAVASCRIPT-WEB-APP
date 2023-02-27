@@ -605,3 +605,5 @@ const marketplace = [
     released: '2022-10-28'
   }
 ];
+
+module.exports = {marketplace};
