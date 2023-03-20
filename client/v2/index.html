@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+le html : <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>👕 Clear Fahion | Environmentally & human-friendly clothes</title>
+    <link rel="stylesheet" href="index.css">
   </head>
   <body>
     <h1>Clear fashion</h1>
@@ -20,8 +21,14 @@
         <select name="page" id="page-select"> </select>
       </div>
       <div id="filters">
-        <span>By reasonable price</span>
-        <span>By recently released</span>
+        <label>
+          <input type="checkbox" id="recentFilter" />
+          Recently released (less than 2 weeks)
+        </label>
+        <label>
+          <input type="checkbox" id="priceFilter" />
+          Reasonable price (less than 50€)
+        </label>
         <div id="brand">
           <label for="brand-select">By brands:</label>
           <select name="brand" id="brand-select"> </select>
@@ -36,6 +43,10 @@
           <option value="date-desc">Anciently released</option>
         </select>
       </div>
+      <div>
+        <label for="favoritesFilter">Show favorites:</label>
+        <input type="checkbox" id="favoritesFilter">
+      </div>
     </section>
     <section id="indicators">
       <h2>Indicators</h2>
@@ -49,25 +60,26 @@
       </div>
       <div>
         <span>Number of new products</span>
-        <span>0</span>
+        <span id="nbRecentProducts">0</span>
       </div>
       <div>
         <span>p50 price value</span>
-        <span>0</span>
+        <span id="p50Price">0</span>
       </div>
       <div>
         <span>p90 price value</span>
-        <span>0</span>
+        <span id="p90Price">0</span>
       </div>
       <div>
         <span>p95 price value</span>
-        <span>0</span>
+        <span id="p95Price">0</span>
       </div>
       <div>
         <span>Last released date</span>
-        <span>2020-01-01</span>
+        <span id="lastReleasedDate">2020-01-01</span>
       </div>
     </section>
+    
     <section id="products"></section>
     <script type="text/javascript" charset="UTF-8" src="portfolio.js"></script>
   </body>

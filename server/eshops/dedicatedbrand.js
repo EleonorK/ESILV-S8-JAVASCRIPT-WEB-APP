@@ -50,3 +50,35 @@ module.exports.scrape = async url => {
     return null;
   }
 };
+const axios = require('axios');
+const fs = require('fs');
+const url = 'https://www.dedicatedbrand.com/en/men/news';
+
+axios.get(url)
+  .then(response => {
+    const html = response.data;
+    const $ = cheerio.load(html);
+    const newsItems = $('.productList');
+
+    const news = [];
+
+    newsItems.each((i, el) => {
+      const brand= "dedicatedbrand";
+      const title= $(el).find('.productList-title').text().trim();
+      const price = $(el).find('.productList-price').text().trim().replace("EUR", "€");
+
+      news.push({ brand, title, price, releaseDateStr });
+    });
+
+    // Log the news array to the console to verify it
+    console.log(news);
+
+    // Convert the list to JSON format
+    const newsJSON = JSON.stringify(news);
+
+    // Write the JSON to a file
+    fs.writeFileSync('dedicatedbrand.json', newsJSON);
+  })
+  .catch(console.error);
+
+
